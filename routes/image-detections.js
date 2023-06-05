@@ -1,4 +1,4 @@
-require('dotenv').config({path: './.env'});
+require('dotenv').config({ path: './.env' });
 var express = require('express');
 var router = express.Router();
 
@@ -62,7 +62,7 @@ router.get('/', async function (req, res) {
   }
 
   // Limit result
-  perPage = parseInt(perPage) ?? 15
+  perPage = parseInt(perPage ?? 15)
   perPage = Math.max(15, perPage)
   perPage = Math.min(30, perPage)
   ref = ref.limit(perPage)
