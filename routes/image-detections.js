@@ -49,12 +49,12 @@ router.get('/', async function (req, res) {
   if (after) {
     console.log(`Filtering after: ${after}`)
 
-    previousDocRef = db.doc(`data/myxzlpltk@gmail.com/images/${after}`)
+    previousDocRef = userImagesRef.doc(after)
     previousDocSnapshot = await previousDocRef.get()
     if (!previousDocSnapshot.exists) {
-      return res.json({
-        status: "Success",
-        data: []
+      return res.status(404).json({
+        status: "Error",
+        message: "Pagination reference does not exist"
       })
     }
 
